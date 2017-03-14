@@ -1,7 +1,7 @@
 FROM alpine:3.5
 
 ARG BERKELEYDB_VERSION=4.8.30
-ARG BITCOIN_UNLIMITED_VERSION=1.0.0.1
+ARG BITCOIN_UNLIMITED_BRANCH=release
 ARG SUPERVISOR_VERSION=3.3.0
 
 WORKDIR /srv/src
@@ -30,7 +30,7 @@ RUN apk update \
   && cd /srv/src \
   && git clone https://github.com/BitcoinUnlimited/BitcoinUnlimited.git \
   && cd BitcoinUnlimited \
-  && git checkout tags/${BITCOIN_UNLIMITED_VERSION} \
+  && git checkout ${BITCOIN_UNLIMITED_BRANCH} \
 
   && ./autogen.sh \
   && ./configure \
